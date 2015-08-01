@@ -1,0 +1,7 @@
+<h1>Welcome to Idea Box</h1>
+
+<%= bootstrap_form_for(@user) do |f| %>
+<%= f.text_field :username %>
+<%= f.password_field :password_digest %>
+<%= f.submit "Join Idea Box" %>
+<% end %>
