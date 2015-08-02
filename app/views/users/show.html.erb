@@ -1,45 +1,45 @@
 <h1>Welcome <%= @user.username %></h1>
-<h3>Your Great Ideas</h3>
-<% @ideas.each do |idea| %>
-<div class="col-md-3 col-sm-6">
-  <div class="thumbnail">
-    <h3 class="text-center"><%= idea.title %></h3>
-    <% idea.images.each do |image| %>
-    <img src="<%=image.url%>" class="img-thumbnail">
-    <% end %>
-    <div class="caption">
+<div class="row">
+  <h3>Your Great Ideas</h3>
+  <% @ideas.each do |idea| %>
+  <div class="col-md-3 col-sm-6">
+    <div class="thumbnail">
+      <h3 class="text-center"><%= idea.title %></h3>
+      <% idea.images.each do |image| %>
+      <img src="<%=image.url%>" class="img-thumbnail">
+      <% end %>
+      <div class="caption">
 
-      <p><%= idea.description %></p>
-      <p class="label label-default"><%= idea.category.name%></p><br><br>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= link_to "Edit", edit_idea_path(idea), class: "btn btn-primary btn-xs btn-block" %>
-        </div>
-        <div class="col-sm-6">
-          <%= link_to "Delete", idea_path(idea), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs btn-block" %>
+        <p><%= idea.description %></p>
+        <p class="label label-default"><%= idea.category.name%></p><br><br>
+        <div class="row">
+          <div class="col-sm-6">
+            <%= link_to "Edit", edit_idea_path(idea), class: "btn btn-primary btn-xs btn-block" %>
+          </div>
+          <div class="col-sm-6">
+            <%= link_to "Delete", idea_path(idea), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs btn-block" %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-</div>
-
 <% end %>
-<div class="col-sm-6 col-sm-offset-3">
-  <div class="well">
-
-  <h1>Add a New Idea</h1>
-
-  <%= bootstrap_form_for(@idea) do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_area :description %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-    <%= f.submit "Add Your Idea", class: "btn btn-success btn-lg btn-block"%>
-  <% end %>
 </div>
-<!-- <div class="col-sm-4 col-sm-offset-4">
-  <%= link_to "Add a New Idea", new_idea_path, class: "btn btn-success btn-lg btn-block"  %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
 
-</div> -->
+    <h1>Add a New Idea</h1>
 
+    <%= bootstrap_form_for(@idea) do |f| %>
+      <%= f.text_field :title %>
+      <%= f.text_area :description %>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+      <%= f.collection_check_boxes :image_list, Image.all, :id, :name %>
+
+      <%= f.primary "Add Idea" %>
+
+    <% end %>
+    </div>
+  </div>
 </div>

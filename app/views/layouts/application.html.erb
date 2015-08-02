@@ -25,7 +25,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li> <%= link_to "Welcome back #{current_user.username}", "#"  %></li>
+          <li> <%= link_to "Welcome back #{current_user.username}", current_user  %></li>
           <li><%= link_to "New Idea", new_idea_path %></li>
           <li><%= link_to "Logout", logout_path %></li>
         <% else %>

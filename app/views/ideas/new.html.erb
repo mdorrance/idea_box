@@ -1,11 +1,8 @@
-<h1>Add a New Idea</h1>
-
-<%= bootstrap_form_for(@idea) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.collection_select :category_id, Category.all, :id, :name %>
-  <%= f.collection_check_boxes :image_list, Image.all, :id, :url %>
-
-  <%= f.submit "Add Idea" %>
-
-<% end %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+      <h1>Add a New Idea</h1>
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
