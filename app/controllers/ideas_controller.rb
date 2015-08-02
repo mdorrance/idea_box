@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  before_action :set_idea, only: [:edit, :update, :destroy]
   def index
   end
 
@@ -17,9 +18,27 @@ class IdeasController < ApplicationController
     end
   end
 
+  def edit
+    @idea = Idea.find(params[:id])
+  end
+
+  def update
+    @idea.update(idea_params)
+    redirect_to current_user
+  end
+
+  def destroy
+    @idea.destroy
+    redirect_to current_user
+  end
+
   private
 
   def idea_params
     params.require(:idea).permit(:title, :description, :category_id)
+  end
+
+  def set_idea
+    @idea = Idea.find(params[:id])
   end
 end

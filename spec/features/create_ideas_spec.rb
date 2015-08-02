@@ -26,6 +26,9 @@ feature "user creates new idea" do
     expect(page).to have_content 'A great idea.'
     expect(page).to have_content 'Edit'
     expect(page).to have_content 'Delete'
+
+    click_link "Edit"
+    expect(page).to have_content "Edit your idea"
   end
 
 end
