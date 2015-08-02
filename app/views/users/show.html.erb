@@ -4,7 +4,9 @@
 <div class="col-md-3 col-sm-6">
   <div class="thumbnail">
     <h3 class="text-center"><%= idea.title %></h3>
-    <img src="http://placehold.it/350x150">
+    <% idea.images.each do |image| %>
+    <img src="<%=image.url%>" class="img-thumbnail">
+    <% end %>
     <div class="caption">
 
       <p><%= idea.description %></p>

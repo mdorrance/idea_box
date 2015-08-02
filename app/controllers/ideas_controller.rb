@@ -10,6 +10,7 @@ class IdeasController < ApplicationController
   def create
     @idea = current_user.ideas.new(idea_params)
     if @idea.save
+      @idea.save_image(params[:idea][:image_list])
       flash[:success] = "#{@idea.title} has been added!"
       redirect_to current_user
     else
@@ -28,14 +29,14 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @idea.destroy
+    @idea.delete
     redirect_to current_user
   end
 
   private
 
   def idea_params
-    params.require(:idea).permit(:title, :description, :category_id)
+    params.require(:idea).permit(:title, :description, :category_id, :image_list)
   end
 
   def set_idea

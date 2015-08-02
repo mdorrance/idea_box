@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
   resources :ideas
+  resources :images
   resources :sessions, only: :new
 
   get '/login', to: 'sessions#new'
