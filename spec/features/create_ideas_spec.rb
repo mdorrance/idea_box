@@ -15,7 +15,7 @@ feature "user creates new idea" do
     Category.create(name:"Home")
     Category.create(name:"Sport")
     Category.create(name:"Hobby")
-    
+
     visit new_idea_path
     fill_in "Title", with: "Idea 1"
     fill_in "Description", with: "A great idea."
@@ -23,6 +23,9 @@ feature "user creates new idea" do
     click_button "Add Idea"
 
     expect(page).to have_content 'Idea 1'
+    expect(page).to have_content 'A great idea.'
+    expect(page).to have_content 'Edit'
+    expect(page).to have_content 'Delete'
   end
 
 end

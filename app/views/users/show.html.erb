@@ -1,1 +1,15 @@
-<h1>Welcome <%= @user.username %></h1> 
+<h1>Welcome <%= @user.username %></h1>
+<h3>Your Great Ideas</h3>
+<% @ideas.each do |idea| %>
+<div class="col-md-3 col-sm-6">
+  <div class="thumbnail">
+    <%= idea.title %><br>
+    <%= idea.description %><br>
+    <%= idea.category.name %><br>
+    <%= link_to "Edit", edit_idea_path %>
+    <%= link_to "Delete", idea_path(idea), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %>
+  </div>
+
+</div>
+
+<% end %>

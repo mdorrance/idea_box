@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @ideas = @user.ideas.all
   end
 
   private
