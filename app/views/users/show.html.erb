@@ -3,9 +3,10 @@
 <% @ideas.each do |idea| %>
 <div class="col-md-3 col-sm-6">
   <div class="thumbnail">
+    <h3 class="text-center"><%= idea.title %></h3>
     <img src="http://placehold.it/350x150">
     <div class="caption">
-      <h3><%= idea.title %></h3>
+
       <p><%= idea.description %></p>
       <p class="label label-default"><%= idea.category.name%></p><br><br>
       <div class="row">
@@ -22,3 +23,21 @@
 </div>
 
 <% end %>
+<div class="col-sm-6 col-sm-offset-3">
+  <div class="well">
+
+  <h1>Add a New Idea</h1>
+
+  <%= bootstrap_form_for(@idea) do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :description %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.submit "Add Your Idea", class: "btn btn-success btn-lg btn-block"%>
+  <% end %>
+</div>
+<!-- <div class="col-sm-4 col-sm-offset-4">
+  <%= link_to "Add a New Idea", new_idea_path, class: "btn btn-success btn-lg btn-block"  %>
+
+</div> -->
+
+</div>
