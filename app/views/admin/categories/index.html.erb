@@ -1,0 +1,19 @@
+<h1 class="text-center">All Categories</h1>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+      <% @categories.each do |category| %>
+      <h3 class="text-center"><%= category.name %> <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-primary btn-xs" %> <%= link_to "Delete", admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+
+    <%= link_to "Add New Category", new_admin_category_path, class: "btn btn-success btn-block" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<h1 class="text-center">All Images</h1>
+<% @images.each do |image| %>
+<div class="col-md-3 col-sm-6">
+  <div class="thumbnail">
+    <h3 class="text-center"><%= image.name %></h3>
+    <img src="<%=image.url%>" class="img-thumbnail"><br>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= link_to "Edit", edit_admin_image_path(image), class: "btn btn-primary btn-xs btn-block" %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "Delete", admin_image_path(image), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+
+    <%= link_to "Add New Image", new_admin_image_path, class: "btn btn-success btn-block" %>
+    </div>
+  </div>
+</div>

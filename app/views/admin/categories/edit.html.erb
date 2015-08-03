@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+      <h1 class="text-center">Edit Your Category</h1>
+      <%= form_for @category, :url => admin_category_path, :html => {method: :patch} do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+
+        <%= f.submit %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

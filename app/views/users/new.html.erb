@@ -1,7 +1,12 @@
-<h1>Welcome to Idea Box</h1>
-
-<%= bootstrap_form_for(@user) do |f| %>
-<%= f.text_field :username %>
-<%= f.text_field :password %>
-<%= f.submit "Join Idea Box" %>
-<% end %>
+<h1 class="text-center">Welcome to Idea Box</h1>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+      <%= bootstrap_form_for(@user) do |f| %>
+      <%= f.text_field :username %>
+      <%= f.text_field :password %>
+      <%= f.submit "Join Idea Box" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -17,14 +17,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Idea Box", ideas_path, class: "navbar-brand" %>
+      <% if current_user && current_user.admin? %>
+      <%= link_to "Idea Box", admin_users_path, class: "navbar-brand" %>
+      <% elsif current_user %>
+      <%= link_to "Idea Box", current_user, class: "navbar-brand" %>
+      <% else %>
+      <%= link_to "Idea Box", new_user_path, class: "navbar-brand" %>
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
+        <% if current_user && current_user.admin? %>
+          <li> <%= link_to "Welcome back Admin #{current_user.username}", admin_users_path  %></li>
+          <li><%= link_to "New Idea", new_idea_path %></li>
+          <li><%= link_to "Images", admin_images_path %></li>
+          <li><%= link_to "Categories", admin_categories_path %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+        <% elsif current_user %>
           <li> <%= link_to "Welcome back #{current_user.username}", current_user  %></li>
           <li><%= link_to "New Idea", new_idea_path %></li>
           <li><%= link_to "Logout", logout_path %></li>

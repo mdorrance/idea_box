@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+      <h1>Edit Your Image</h1>
+      <%= form_for @image, :url => admin_image_path, :html => {method: :patch} do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+        <%= f.label :url %>
+        <%= f.text_field :url %><br>
+
+        <%= f.submit %>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

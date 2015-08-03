@@ -1,5 +1,12 @@
-<%= bootstrap_form_for(:session, url: login_path) do |f| %>
-  <%= f.text_field :username %>
-  <%= f.password_field :password %>
-  <%= f.submit "Login"%>
-<% end %>
+<div class="row">
+  <h1 class="text-center">Welcome Back!</h1>
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+      <%= bootstrap_form_for(:session, url: login_path) do |f| %>
+        <%= f.text_field :username %>
+        <%= f.password_field :password %>
+        <%= f.submit "Login"%>
+      <% end %>
+    </div>
+  </div>
+</div>
